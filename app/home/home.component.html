@@ -1,0 +1,19 @@
+﻿<div id="medecin" *ngIf="medecins">
+    <h1>Home</h1>
+    <p>Bonjour {{medecins.nomMed}} {{medecins.prenomMed}}</p>
+    <div>
+        Vous êtes authentifié !
+
+    </div>
+    <p><a [routerLink]="['/login']">Logout</a></p>
+</div>
+
+<div id="patient" *ngIf="patients">
+    <h1>Home</h1>
+    <p>Bonjour {{patients.nomPat}} {{patients.prenomPat}}</p>
+    <div>
+        Vous êtes authentifié !
+
+    </div>
+    <p><a [routerLink]="['/login']">Logout</a></p>
+</div>
