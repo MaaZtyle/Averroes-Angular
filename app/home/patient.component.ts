@@ -3,8 +3,8 @@
  */
 import {Component, OnInit, Input} from '@angular/core';
 
-import { User } from '../_models/index';
-import { UserService } from '../_services/index';
+
+import { PatientService } from '../_services/index';
 import {Patient} from "../_models/patient";
 import {JwtHelper} from "../_services/JwtHelper";
 
@@ -22,7 +22,7 @@ export class PatientComponent implements OnInit {
     @Input()
     patient: Patient;
 
-    constructor(private userService: UserService) { }
+    constructor(private patientService: PatientService) { }
 
     ngOnInit() {
 
@@ -34,7 +34,7 @@ export class PatientComponent implements OnInit {
 
 
             // get users from secure api end point
-            this.userService.getPatient()
+            this.patientService.getPatient()
                 .subscribe(reponse => {
                     this.patient = reponse;
 

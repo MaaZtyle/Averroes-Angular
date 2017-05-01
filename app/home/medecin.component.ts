@@ -4,7 +4,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 
 import { User } from '../_models/index';
-import { UserService } from '../_services/index';
+import { UserService, MedecinService } from '../_services/index';
 import {Medecin} from "../_models/medecin";
 import {JwtHelper} from "../_services/JwtHelper";
 
@@ -24,9 +24,12 @@ export class MedecinComponent implements OnInit {
     @Input()
     medecin: Medecin;
 
+    @Input()
+    patients: Patient[];
 
 
-    constructor(private userService: UserService) { }
+
+    constructor(private medecinService: MedecinService) { }
 
     ngOnInit() {
 
@@ -37,11 +40,18 @@ export class MedecinComponent implements OnInit {
         console.log(parsedToken.role);
 
             // get users from secure api end point
-            this.userService.getMedecin()
+            this.medecinService.getMedecin()
                 .subscribe(reponse => {
                     this.medecin = reponse;
 
                 })
+
+        // get patients from secure api end point
+        this.medecinService.getListPatients()
+            .subscribe(reponse => {
+                this.patients = reponse;
+
+            })
 
 
 
