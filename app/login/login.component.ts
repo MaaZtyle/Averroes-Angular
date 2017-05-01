@@ -37,9 +37,22 @@ export class LoginComponent implements OnInit {
             .subscribe(result => {
                 if (result === true) {
 
+                    var jwtHelper = new JwtHelper();
+                    var parsedToken = jwtHelper.decodeToken(localStorage.getItem('token'));
+
+                    console.log(parsedToken.role);
+                    if(parsedToken.role === "medecin") {
+                        // si c'est un medecin, j'affiche sa page d'acceuil
+                        this.router.navigate(['medecin']);
+
+                            }
+
+                    else {
+                    // si c'est un patient, j'affiche sa page d'acceuil
+                    this.router.navigate(['patient']);
+                    }
 
 
-                    this.router.navigate(['/']);
 
                 } else {
                     this.error = 'Username or password is incorrect';

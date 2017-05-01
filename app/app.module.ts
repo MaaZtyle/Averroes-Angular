@@ -15,6 +15,8 @@ import { AuthGuard } from './_guards/index';
 import { AuthenticationService, UserService } from './_services/index';
 import { LoginComponent } from './login/index';
 import { HomeComponent } from './home/index';
+import {MedecinComponent} from "./home/medecin.component";
+import {PatientComponent} from "./home/patient.component";
 
 @NgModule({
     imports: [
@@ -26,7 +28,9 @@ import { HomeComponent } from './home/index';
     declarations: [
         AppComponent,
         LoginComponent,
-        HomeComponent
+        HomeComponent,
+        MedecinComponent,
+        PatientComponent
     ],
     providers: [
         AuthGuard,
