@@ -13,7 +13,7 @@
     <div>
         Voici tous vos patients :
         <ul>
-            <li *ngFor="let patient of patients">
+            <li  *ngFor="let patient of patients" (click)="onSelect(patient)">
                 <div>Id Patient: {{ patient.idPat }}
                      Nom: {{ patient.nomPat }}
                      Prenom:{{ patient.prenomPat }}
@@ -25,6 +25,12 @@
         </ul>
 
 
-    </div>
 
+
+    </div>
+    <div id="dossier" *ngIf="dossierMedical">
+    <p>Adresse {{dossierMedical.adressePat}} {{dossierMedical.age}}</p>
+        </div>
 </div>
+
+

@@ -14,11 +14,12 @@ import { routing }        from './app.routing';
 import { AuthGuard } from './_guards/index';
 import { AuthenticationService, UserService } from './_services/index';
 import { LoginComponent } from './login/index';
-import { HomeComponent } from './home/index';
 import {MedecinComponent} from "./home/medecin.component";
 import {PatientComponent} from "./home/patient.component";
 import {MedecinService} from "./_services/medecin.service";
 import {PatientService} from "./_services/patient.service";
+import {DossierMedicalService} from "./_services/dossierMedical.service";
+import {DossierMedicalComponent} from "./home/dossierMedical.component";
 
 @NgModule({
     imports: [
@@ -31,14 +32,16 @@ import {PatientService} from "./_services/patient.service";
         AppComponent,
         LoginComponent,
         MedecinComponent,
-        PatientComponent
+        PatientComponent,
+        DossierMedicalComponent
     ],
     providers: [
         AuthGuard,
         AuthenticationService,
         UserService,
         MedecinService,
-        PatientService
+        PatientService,
+        DossierMedicalService,
 
 
 

@@ -1,0 +1,17 @@
+<div id="dossierMedical">
+    <h2>Détail du dossier selectionné</h2>
+
+    <div>Numéro du dossier : {{ dossierMedical.idDos }}</div>
+    <div>
+        <label>Date de naissance :</label>
+        <input [(ngModel)]="dossierMedical.dateNaissancePat" />
+    </div>
+    <div>
+        <label>Portable :</label>
+        <input [(ngModel)]="dossierMedical.telMobPat" />
+    </div>
+    <div>
+        <label>Téléphone fixe :</label>
+        <input [(ngModel)]="dossierMedical.telFixePat" />
+    </div>
+</div>

@@ -5,6 +5,7 @@
 
 
 export class Patient {
+
     idPat: number;
     nomPat: string;
     prenomPat: string;
