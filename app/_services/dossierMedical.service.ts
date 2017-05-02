@@ -29,7 +29,7 @@ export class DossierMedicalService {
     }
 
 
-    getDossierMedical(patient: Patient): Observable<DossierMedical> {
+    getDossierMedical(idPat: String): Observable<DossierMedical> {
 
 
         // add authorization header with jwt token
@@ -42,7 +42,7 @@ export class DossierMedicalService {
 
         //set request params
         let params: URLSearchParams = new URLSearchParams();
-        params.set("idPat", patient.idPat.toString());
+        params.set("idPat", idPat);
         // params.set("role", parsedToken.role);
         options.search = params;
 
@@ -62,7 +62,7 @@ export class DossierMedicalService {
     private extractData(res: Response) {
         let body = res.json();
 
-        console.log(body);
+        //console.log(body);
         return body || {};
     }
 

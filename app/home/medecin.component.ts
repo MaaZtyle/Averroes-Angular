@@ -18,8 +18,9 @@ import {DossierMedical} from "../_models/dossierMedical";
 @Component({
 
     moduleId: module.id,
+    Selector: 'my-app',
     templateUrl: 'medecin.component.html',
-    entryComponents: [DossierMedicalComponent]
+    directives : [DossierMedicalComponent]
 
 })
 
@@ -27,13 +28,13 @@ export class MedecinComponent implements OnInit {
 
     constructor(private dossierMedicalService: DossierMedicalService,private medecinService: MedecinService) { }
 
-    @Input()
+
     medecin: Medecin;
 
-    @Input()
+
     patients: Patient[];
 
-    @Input()
+
     dossierMedical: DossierMedical;
 
     // Patient sélectionnée
@@ -47,13 +48,13 @@ export class MedecinComponent implements OnInit {
         this.patientSelectionne= patient;
 
 
-        // get dossier medical
+       /* // get dossier medical
         this.dossierMedicalService.getDossierMedical(this.patientSelectionne)
             .subscribe(reponse => {
             this.dossierMedical = reponse;
 
         })
-
+*/
 
     }
 

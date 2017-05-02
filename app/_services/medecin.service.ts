@@ -105,7 +105,7 @@ export class MedecinService {
     private extractData(res: Response) {
         let body = res.json();
 
-        console.log(body);
+        //console.log(body);
         return body || {};
     }
 

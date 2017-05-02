@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
                     var jwtHelper = new JwtHelper();
                     var parsedToken = jwtHelper.decodeToken(localStorage.getItem('token'));
 
-                    console.log(parsedToken.role);
+                    //console.log(parsedToken.role);
                     if(parsedToken.role === "medecin") {
                         // si c'est un medecin, j'affiche sa page d'acceuil
                         this.router.navigate(['medecin']);
