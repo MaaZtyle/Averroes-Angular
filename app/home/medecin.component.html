@@ -7,7 +7,7 @@
     </div>
 
 
-    <div>
+    <div id="patients">
         Voici tous vos patients :
         <ul>
             <li  *ngFor="let patient of patients" (click)="onSelect(patient)">
@@ -21,9 +21,9 @@
             </li>
         </ul>
 
-
+        <div id="dossierMedical">
         <dossierMedical *ngIf="patientSelectionne" [patient]="patientSelectionne"></dossierMedical>
-
+        </div>
 
 </div>
 

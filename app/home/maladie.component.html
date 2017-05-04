@@ -1,0 +1,21 @@
+<div id="maladies" *ngIf="dossierMedical">
+    <h2>Maladies du patient</h2>
+
+
+    Voici toutes vos maladies :
+    <ul>
+        <li  *ngFor="let maladie of maladies">
+            <div>Id Maladie: {{ maladie.idMal }}
+                Designation: {{ maladie.designationMal }}
+                Description:{{ maladie.descriptionMal }}
+                Date d'apparition : {{ maladie.dateAppMal }}
+                Date de création :{{  maladie.dateCreationMal }}
+
+            </div>
+        </li>
+    </ul>
+
+
+
+
+</div>

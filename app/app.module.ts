@@ -11,6 +11,8 @@ import { BaseRequestOptions } from '@angular/http';
 import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
 
+
+
 import { AuthGuard } from './_guards/index';
 import { AuthenticationService, UserService } from './_services/index';
 import { LoginComponent } from './login/index';
@@ -20,6 +22,8 @@ import {MedecinService} from "./_services/medecin.service";
 import {PatientService} from "./_services/patient.service";
 import {DossierMedicalService} from "./_services/dossierMedical.service";
 import {DossierMedicalComponent} from "./home/dossierMedical.component";
+import { MaladieComponent} from "./home/maladie.component";
+import {MaladieService} from "./_services/maladie.service";
 
 @NgModule({
     imports: [
@@ -33,7 +37,8 @@ import {DossierMedicalComponent} from "./home/dossierMedical.component";
         LoginComponent,
         MedecinComponent,
         PatientComponent,
-        DossierMedicalComponent
+        DossierMedicalComponent,
+        MaladieComponent
     ],
     providers: [
         AuthGuard,
@@ -42,6 +47,7 @@ import {DossierMedicalComponent} from "./home/dossierMedical.component";
         MedecinService,
         PatientService,
         DossierMedicalService,
+        MaladieService
 
 
 

@@ -1,35 +1,21 @@
 /**
- * Created by Maazouza on 01/05/2017.
+ * Created by Maazouza on 04/05/2017.
  */
-
-import {Injectable, Input, Inject} from '@angular/core';
-import { Http, Headers, RequestOptions, Response,URLSearchParams  } from '@angular/http';
-
-
-
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-
-
-
-import {JwtHelper} from "./JwtHelper";
 import {Observable} from "rxjs/Rx";
-import {DossierMedical} from "../_models/dossierMedical";
-import {Patient} from "../_models/patient";
-
+import {Http, Headers, RequestOptions, Response,URLSearchParams} from "@angular/http";
+import {Maladie} from "../_models/maladie";
+import {Injectable} from "@angular/core";
 
 
 @Injectable()
-export class DossierMedicalService {
-
-
+export class MaladieService{
 
     constructor(
         private http: Http) {
     }
 
 
-    getDossierMedical(idPat: string): Observable<DossierMedical> {
+    getMaladies(idDos: string): Observable<Maladie[]> {
 
 
         // add authorization header with jwt token
@@ -42,12 +28,12 @@ export class DossierMedicalService {
 
         //set request params
         let params: URLSearchParams = new URLSearchParams();
-        params.set("idPat", idPat);
+        params.set("idDos", idDos);
         // params.set("role", parsedToken.role);
         options.search = params;
 
 
-        let url = "http://localhost:8080/AVERROES_MIDDLEWARE/ws/dossiermedical/id/";
+        let url = "http://localhost:8080/AVERROES_MIDDLEWARE/ws/dossiermedical/maladies/";
         //console.log("url: ", url);
 
         //console.log(this.authenticationService.token);
@@ -79,10 +65,6 @@ export class DossierMedicalService {
         console.error(errMsg);
         return Observable.throw(errMsg);
     }
-
-
-
-
 
 
 

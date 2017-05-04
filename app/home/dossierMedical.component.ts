@@ -5,6 +5,7 @@ import {Component, Input, OnInit} from "@angular/core";
 import {DossierMedical} from "../_models/dossierMedical";
 import {Patient} from "../_models/patient";
 import {DossierMedicalService} from "../_services/dossierMedical.service";
+import {MaladieComponent} from "./maladie.component";
 
 
 @Component({
@@ -12,6 +13,7 @@ import {DossierMedicalService} from "../_services/dossierMedical.service";
     selector: 'dossierMedical',
     moduleId: module.id,
     templateUrl: 'dossierMedical.component.html',
+    //directives : [MaladieComponent]
 
 })
 
@@ -21,12 +23,13 @@ export class DossierMedicalComponent{
     patient: Patient;
 
 
+
     dossierMedical: DossierMedical;
 
     constructor(private dossierMedicalService: DossierMedicalService) { }
 
     detailDossier() {
-        this.dossierMedicalService.getDossierMedical(this.patient.idPat)
+        this.dossierMedicalService.getDossierMedical(this.patient.idPat.toString())
             .subscribe(reponse => {
                 this.dossierMedical = reponse;
                 console.log(this.dossierMedical);
@@ -35,7 +38,7 @@ export class DossierMedicalComponent{
     }
 
     ngOnChanges() {
-    // reset login status
+    // reset dossier details
         this.detailDossier();
     }
 

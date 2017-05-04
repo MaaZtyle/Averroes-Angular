@@ -18,9 +18,9 @@ import {DossierMedical} from "../_models/dossierMedical";
 @Component({
 
     moduleId: module.id,
-    Selector: 'my-app',
+    //Selector: 'my-app',
     templateUrl: 'medecin.component.html',
-    directives : [DossierMedicalComponent]
+    //directives : [DossierMedicalComponent]
 
 })
 
