@@ -4,6 +4,7 @@
 
 export class Maladie {
 
+    idDos: number;
     idMal: number;
     designationMal: string;
     descriptionMal: string;

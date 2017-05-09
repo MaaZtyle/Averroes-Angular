@@ -1,0 +1,26 @@
+
+
+<div id="antecedents" *ngIf="dossierMedical">
+    <h2>Antecedents du patient</h2>
+
+
+    Voici tous les antécédents :
+
+
+    <select multiple class="form-control">
+
+        <option *ngFor="let antecedent of antecedents">
+
+            Id: {{ antecedent.idAnt }}
+            Date de l'antécédent: {{ antecedent.dateAnt }}
+            Description:{{ antecedent.descriptionAnt }}
+            Commentaire : {{ antecedent.commentaireAnt }}
+            Sujet :{{  antecedent.sujetAnt }}
+            Date de création :{{  antecedent.dateCreationAnt }}
+
+
+        </option>
+
+    </select>
+
+</div>

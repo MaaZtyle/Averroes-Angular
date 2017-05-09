@@ -9,27 +9,90 @@
 
     <div id="patients">
         Voici tous vos patients :
-        <ul>
-            <li  *ngFor="let patient of patients" (click)="onSelect(patient)">
-                <div>Id Patient: {{ patient.idPat }}
-                     Nom: {{ patient.nomPat }}
-                     Prenom:{{ patient.prenomPat }}
-                     email: {{ patient.emailPat }}
-                     Mdp:{{ patient.mdpPat }}
-                     Id Medecin: {{ medecin.idMed }}
-                </div>
-            </li>
-        </ul>
+
+
+
+
+        <select multiple class="form-control">
+
+            <option  *ngFor="let patient of patients" (click)="onSelect(patient)" (dblclick)="lgModal.show()">
+                Id Patient : {{ patient.idPat }}
+                Nom:  :{{ patient.nomPat }}
+                Prenom: {{ patient.prenomPat }}
+                email: {{ patient.emailPat }}
+                mdp : {{ patient.mdpPat }}
+                Id Medecin{{ patient.idMed }}
+            </option>
+            </select>
+
+
+
+        <!-- <div id="detailPatient">
+            <patient-detail *ngIf="patientSelectionne" [patient]="patientSelectionne"></patient-detail>
+        </div> -->
 
         <div id="dossierMedical">
         <dossierMedical *ngIf="patientSelectionne" [patient]="patientSelectionne"></dossierMedical>
         </div>
 
-</div>
+
+
+        <!--Large modal-->
+        <button class="btn btn-primary" (click)="lgModal.show()">Detail-patient</button>
+
+        <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title pull-left">Detail-patient</h4>
+                        <button type="button" class="close pull-right" (click)="lgModal.hide()" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="detail" *ngIf="patientSelectionne">
+
+                            <div>
+                                <label>id2 :</label>
+                                <input [(ngModel)]="patientSelectionne.idPat" />
+                            </div>
+                            <div>
+                                <label>Nom:</label>
+                                <input [(ngModel)]="patientSelectionne.nomPat" />
+                            </div>
+                            <div>
+                                <label>Prenom:</label>
+                                <input [(ngModel)]="patientSelectionne.prenomPat" />
+                            </div>
+                            <div>
+                                <label>email:</label>
+                                <input [(ngModel)]="patientSelectionne.emailPat" />
+                            </div>
+                            <div>
+                                <label>mdp:</label>
+                                <input [(ngModel)]="patientSelectionne.mdpPat" />
+                            </div>
+                            <div>
+                                <label>Id Medecin:</label>
+                                <input [(ngModel)]="patientSelectionne.idMed" />
+                            </div>
+
+                              </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+         <button [routerLink]="['/login']" class="btn btn-primary">Logout</button>
+            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        </div>
+
 
 </div>
 
-<div class="form-group">
-    <button [routerLink]="['/login']" class="btn btn-primary">Logout</button>
-    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-</div>
+    </div>

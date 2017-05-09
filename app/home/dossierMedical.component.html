@@ -2,19 +2,33 @@
     <h2>Détail du dossier selectionné</h2>
 
     <div>Numéro du dossier : {{ dossierMedical.idDos }}</div>
-    <div>
-        <label>Date de naissance :</label>
-        <input [(ngModel)]="dossierMedical.dateNaissancePat" />
-    </div>
-    <div>
-        <label>Portable :</label>
-        <input [(ngModel)]="dossierMedical.telMobPat" />
-    </div>
-    <div>
-        <label>Téléphone fixe :</label>
-        <input [(ngModel)]="dossierMedical.telFixePat" />
-    </div>
+    <div>Date de naissance : {{ dossierMedical.dateNaissancePat }}</div>
+    <div>Mobile : {{ dossierMedical.telMobPat }}</div>
+    <div>Fixe : {{ dossierMedical.telFixePat }}</div>
+    <div>Adresse : {{ dossierMedical.adressePat }}</div>
+    <div>Numéro Sécurité sociale : {{ dossierMedical.numSecu }}</div>
+    <div>Mutuelle : {{ dossierMedical.mutuelle }}</div>
+    <div>Sexe : {{ dossierMedical.sexe }}</div>
+    <div>Age : {{ dossierMedical.age }}</div>
+    <div>Taille : {{ dossierMedical.taille }}</div>
+    <div>Poids : {{ dossierMedical.poids }}</div>
+    <div>IMC : {{ dossierMedical.imc }}</div>
+    <div>Suivi : {{ dossierMedical.suivi }}</div>
+    <div>Contact famille : {{ dossierMedical.contactFamille }}</div>
+    <div>éléphone du contact Famille : {{ dossierMedical.telContactFamille }}</div>
+    <div>Date création du dossier: {{ dossierMedical.dateCreationDos }}</div>
+    <div>Dossier ouvert : {{ dossierMedical.dossierOuvert }}</div>
+
+
+
+
 </div>
 
-<maladies [dossierMedical]=dossierMedical></maladies>
+<maladies *ngIf="dossierMedical" [dossierMedical]=dossierMedical></maladies>
+<allergies *ngIf="dossierMedical" [dossierMedical]=dossierMedical></allergies>
+<antecedents *ngIf="dossierMedical" [dossierMedical]=dossierMedical></antecedents>
+<ordonnances *ngIf="dossierMedical" [dossierMedical]=dossierMedical></ordonnances>
+<vaccins *ngIf="dossierMedical" [dossierMedical]=dossierMedical></vaccins>
+
+
 

@@ -13,8 +13,10 @@ export class AuthenticationService {
 
     constructor(private http: Http) {
         // set token if saved in local storage
-        var token = JSON.parse(localStorage.getItem('token'));
-        this.token = token;
+        //var token = JSON.parse(localStorage.getItem('token'));
+        //this.token = token;
+
+        localStorage.removeItem('token');
     }
 
     login(username: string, password: string): Observable<boolean> {

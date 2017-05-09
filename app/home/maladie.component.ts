@@ -24,21 +24,36 @@ export class MaladieComponent {
     dossierMedical: DossierMedical;
 
 
+
+    // Maladie sélectionnée
+
+    maladieSelectionne: Maladie;
+
     maladies: Maladie[];
 
     constructor(private maladieService: MaladieService) { }
 
+    // Réagir à la sélection d'une maladie dans la liste
+    onSelect(maladie: Maladie) {
+        // patient selectionné
+
+        this.maladieSelectionne = maladie;
+
+        console.log(this.maladieSelectionne);
+    }
+
     getMaladies() {
-        this.maladieService.getMaladies("5")
+
+        //console.log(dossierMedical.idDos);
+        this.maladieService.getMaladies(this.dossierMedical.idDos.toString())
             .subscribe(reponse => {
                 this.maladies = reponse;
                 console.log(this.maladies);
 
             })
     }
-
     ngOnInit() {
-        // reset maladies
+        // reset ordonnances
         this.getMaladies();
     }
 

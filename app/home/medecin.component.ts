@@ -14,11 +14,10 @@ import {DossierMedical} from "../_models/dossierMedical";
 
 
 
-
 @Component({
 
     moduleId: module.id,
-    //Selector: 'my-app',
+
     templateUrl: 'medecin.component.html',
     //directives : [DossierMedicalComponent]
 
@@ -86,5 +85,7 @@ export class MedecinComponent implements OnInit {
 
 
     }
+
+
 
 }

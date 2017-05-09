@@ -3,24 +3,28 @@
  */
 import {Observable} from "rxjs/Rx";
 import {Http, Headers, RequestOptions, Response,URLSearchParams} from "@angular/http";
-import {Maladie} from "../_models/maladie";
+import {Antecedent} from "../_models/antecedent";
 import {Injectable} from "@angular/core";
 
 
 @Injectable()
-export class MaladieService{
+export class AntecedentService{
 
     constructor(
         private http: Http) {
     }
 
 
-    getMaladies(idDos: string): Observable<Maladie[]> {
+    getAntecedents(idDos: string): Observable<Antecedent[]> {
 
 
         // add authorization header with jwt token
         let headers = new Headers({ 'Authorization': localStorage.getItem('token')});
         let options = new RequestOptions({ headers: headers });
+
+
+
+
 
         //set request params
         let params: URLSearchParams = new URLSearchParams();
@@ -29,7 +33,7 @@ export class MaladieService{
         options.search = params;
 
 
-        let url = "http://localhost:8080/AVERROES_MIDDLEWARE/ws/dossiermedical/maladies/";
+        let url = "http://localhost:8080/AVERROES_MIDDLEWARE/ws/dossiermedical/antecedents/";
         //console.log("url: ", url);
 
         //console.log(this.authenticationService.token);
@@ -61,56 +65,6 @@ export class MaladieService{
         console.error(errMsg);
         return Observable.throw(errMsg);
     }
-
-    ajouterMaladie(maladie: Maladie){
-
-
-        // add authorization header with jwt token
-        let headers = new Headers({ 'Authorization': localStorage.getItem('token')});
-        let options = new RequestOptions({ headers: headers });
-
-        //set request params
-        //let params: URLSearchParams = new URLSearchParams();
-
-        console.log(maladie);
-        //params.set("idDos", idDos);
-        //params.set("designationMal",maladie.designationMal )
-        //params.set("descriptionMal",maladie.descriptionMal)
-        //params.set("dateAppMal",maladie.dateAppMal)
-        // params.set("role", parsedToken.role);
-        //options.url = params;
-
-
-        //console.log(maladie.designationMal);
-        //console.log(maladie.descriptionMal);
-        let url = "http://localhost:8080/AVERROES_MIDDLEWARE/ws/dossiermedical/maladie/";
-        //console.log("url: ", url);
-
-
-        // Nous consommons le WS
-        //return this.http.post(url,options)
-        //    .map((res: Response) => res.json())
-        //    .catch(this.handleError);
-        return this.http
-            .post(url, JSON.stringify(maladie),{headers: headers})
-            .map((response: Response) => {
-
-
-                    return true;
-
-
-
-
-            })
-
-            .catch(() => {
-                // this is executed on a 401 or on any error
-                return Observable.of(false);
-            });
-
-
-    }
-
 
 
 

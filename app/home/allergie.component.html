@@ -1,0 +1,26 @@
+
+
+<div id="allergies" *ngIf="dossierMedical">
+    <h2>Allergies du patient</h2>
+
+
+    Voici toutes les Allergies :
+
+
+    <select multiple class="form-control">
+
+        <option *ngFor="let allergie of allergies">
+
+            Id: {{ allergie.idAll }}
+            Designation: {{ allergie.designationAll }}
+            Description:{{ allergie.descriptionAll }}
+            Date d'apparition : {{ allergie.dateAppAll }}
+            Date de création :{{  allergie.dateCreationAll }}
+            Etat :{{  allergie.etatAll }}
+
+
+        </option>
+
+    </select>
+
+</div>

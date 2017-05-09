@@ -1,0 +1,28 @@
+
+
+<div id="vaccins" *ngIf="dossierMedical">
+    <h2>Vaccins du patient</h2>
+
+
+    Voici tous les vaccins du patient :
+
+
+    <select multiple class="form-control">
+
+        <option *ngFor="let vaccin of vaccins">
+
+            Id: {{ vaccin.idVac }}
+            Désignation: {{ vaccin.nomVac }}
+            Description:{{ vaccin.descriptionVac }}
+            Date dernier vaccin:{{ vaccin.dateDernierVac }}
+            Date prochain vaccin:{{ vaccin.dateProchainVac }}
+            Date création:{{ vaccin.dateCreationVac }}
+            Allerte patient:{{ vaccin.alertePatientVac }}
+            Allerte medecin:{{ vaccin.alerteMedecinVac }}
+
+
+        </option>
+
+    </select>
+
+</div>

@@ -37,7 +37,7 @@ export class DossierMedicalComponent{
             })
     }
 
-    ngOnChanges() {
+    ngOnInit() {
     // reset dossier details
         this.detailDossier();
     }

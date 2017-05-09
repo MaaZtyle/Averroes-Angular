@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }    from '@angular/forms';
 import { HttpModule,JsonpModule } from '@angular/http';
 
+
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers/index';
 import { MockBackend, MockConnection } from '@angular/http/testing';
@@ -24,12 +25,30 @@ import {DossierMedicalService} from "./_services/dossierMedical.service";
 import {DossierMedicalComponent} from "./home/dossierMedical.component";
 import { MaladieComponent} from "./home/maladie.component";
 import {MaladieService} from "./_services/maladie.service";
+import {AllergieService} from "./_services/allergie.service";
+import {AntecedentService} from "./_services/antecedent.service";
+import {MedicamentService} from "./_services/medicament.service";
+import {OrdonnanceService} from "./_services/ordonnance.service";
+import {VaccinService} from "./_services/vaccin.service";
+import {AllergieComponent} from "./home/allergie.component";
+import {AntecedentComponent} from "./home/antecedent.component";
+import {OrdonnanceComponent} from "./home/ordonnance.component";
+import {VaccinComponent} from "./home/vaccin.component";
+import {PatientDetailComponent} from "./home/patient-detail.component";
+import {ModalModule, AlertModule} from "ngx-bootstrap";
+import {MaladieCreationComponent} from "./home/maladie-creation.component";
+
+
+
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
+        ModalModule.forRoot(),
+        AlertModule.forRoot(),
+
         routing
     ],
     declarations: [
@@ -38,7 +57,19 @@ import {MaladieService} from "./_services/maladie.service";
         MedecinComponent,
         PatientComponent,
         DossierMedicalComponent,
-        MaladieComponent
+        MaladieComponent,
+        AllergieComponent,
+        AntecedentComponent,
+        OrdonnanceComponent,
+        VaccinComponent,
+        PatientDetailComponent,
+        MaladieCreationComponent
+
+
+
+
+
+
     ],
     providers: [
         AuthGuard,
@@ -47,7 +78,14 @@ import {MaladieService} from "./_services/maladie.service";
         MedecinService,
         PatientService,
         DossierMedicalService,
-        MaladieService
+        MaladieService,
+        AllergieService,
+        AntecedentService,
+        MedicamentService,
+        OrdonnanceService,
+        VaccinService,
+
+
 
 
 

@@ -1,0 +1,27 @@
+<div id="detailPatient" *ngIf="patient">
+    <h2>Détail du patient selectionné</h2>
+
+    <div>Id : {{ patient.idPat }}</div>
+    <div>
+        <label>Nom :</label>
+        <input [(ngModel)]="patient.nomPat" />
+    </div>
+    <div>
+        <label>Prenom :</label>
+        <input [(ngModel)]="patient.prenomPat" />
+    </div>
+    <div>
+    <label>email :</label>
+    <input [(ngModel)]="patient.emailPat" />
+</div>
+    <div>
+        <label>mdp :</label>
+        <input [(ngModel)]="patient.mdpPat" />
+    </div>
+    <div>
+        <label>Id Medecin :</label>
+        <input [(ngModel)]="patient.idMed" />
+    </div>
+
+
+</div>

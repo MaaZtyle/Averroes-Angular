@@ -1,0 +1,25 @@
+
+
+<div id="medicaments" *ngIf="dossierMedical">
+    <h2>Antecedents du patient</h2>
+
+
+    Voici tous les medicaments de l'ordonnance :
+
+
+    <select multiple class="form-control">
+
+        <option *ngFor="let medicament of medicaments">
+
+            Code CIS: {{ medicament.codeCIS }}
+            Denomination: {{ medicament.denomination }}
+            Posologie:{{ medicament.posologie }}
+            Quantité : {{ medicament.quantite }}
+            Date d'ajout sur l'ordonnance :{{  medicament.dateCreationMed }}
+
+
+        </option>
+
+    </select>
+
+</div>

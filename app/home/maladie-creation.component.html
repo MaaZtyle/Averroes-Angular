@@ -1,0 +1,30 @@
+<h2>Ajouter une Maladie au patient</h2>
+<div>
+    <label>Dossier :{{dossierMedical.idDos}}</label>
+
+</div>
+
+<div>
+    <label>Designation :</label>
+    <input [(ngModel)]="maladie.designationMal" />
+</div>
+<div>
+    <label>Description :</label>
+    <input [(ngModel)]="maladie.descriptionMal" />
+</div>
+<div>
+    <label>Date apparition :</label>
+    <input [(ngModel)]="maladie.dateAppMal" />
+</div>
+
+
+<button (click)="ajouterMaladie(maladie)">OK</button>
+
+
+<div *ngIf="messageKO">
+    <alert type="danger" [dismissOnTimeout]="5000">{{ messageKO }}</alert>
+</div>
+
+<div *ngIf="messageOK">
+    <alert type="success" [dismissOnTimeout]="5000">{{ messageOK }}</alert>
+</div>

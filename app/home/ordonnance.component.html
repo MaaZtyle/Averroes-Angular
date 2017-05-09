@@ -1,0 +1,23 @@
+
+
+<div id="ordonnances" *ngIf="dossierMedical">
+    <h2>Ordonnances du patient</h2>
+
+
+    Voici toutes les ordonnances du patient :
+
+
+    <select multiple class="form-control">
+
+        <option *ngFor="let ordonnance of ordonnances">
+
+            Id: {{ ordonnance.idOrd }}
+            Date Ordonnance: {{ ordonnance.dateOrd }}
+            Date de création:{{ ordonnance.dateCreationOrd }}
+
+
+        </option>
+
+    </select>
+
+</div>

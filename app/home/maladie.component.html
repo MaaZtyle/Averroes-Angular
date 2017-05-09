@@ -1,19 +1,97 @@
+
+
 <div id="maladies" *ngIf="dossierMedical">
     <h2>Maladies du patient</h2>
 
 
     Voici toutes vos maladies :
-    <ul>
-        <li  *ngFor="let maladie of maladies">
-            <div>Id Maladie: {{ maladie.idMal }}
+
+
+    <select multiple class="form-control">
+
+        <option *ngFor="let maladie of maladies"(click)="onSelect(maladie)" (dblclick)="lgModal2.show()">
+
+                Id: {{ maladie.idMal }}
                 Designation: {{ maladie.designationMal }}
                 Description:{{ maladie.descriptionMal }}
                 Date d'apparition : {{ maladie.dateAppMal }}
                 Date de création :{{  maladie.dateCreationMal }}
 
+
+            </option>
+
+
+    </select>
+
+
+
+    <!--Large modal-->
+    <button class="btn btn-primary" (click)="lgModal3.show()">Ajouter</button>
+
+    <div bsModal #lgModal2="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title pull-left">Detail-Maladie</h4>
+                    <button type="button" class="close pull-right" (click)="lgModal2.hide()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="detail" *ngIf="maladieSelectionne">
+
+                        <div>
+                            <label>idMal :</label>
+                            <input [(ngModel)]="maladieSelectionne.idMal" />
+                        </div>
+                        <div>
+                            <label>designationMal:</label>
+                            <input [(ngModel)]="maladieSelectionne.designationMal" />
+                        </div>
+                        <div>
+                            <label>dateAppMal:</label>
+                            <input [(ngModel)]="maladieSelectionne.dateAppMal" />
+                        </div>
+                        <div>
+                            <label>descriptionMal:</label>
+                            <input [(ngModel)]="maladieSelectionne.descriptionMal" />
+                        </div>
+                        <div>
+                            <label>dateCreationMal:</label>
+                            <input [(ngModel)]=" maladieSelectionne.dateCreationMal" />
+                        </div>
+
+
+                    </div>
+
+                </div>
             </div>
-        </li>
-    </ul>
+        </div>
+    </div>
+
+
+    <div bsModal #lgModal3="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title pull-left">Ajouter-Maladie</h4>
+                    <button type="button" class="close pull-right" (click)="lgModal3.hide();getMaladies()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="ajoutMaladie">
+
+
+                          <maladie-creation *ngIf="dossierMedical" [dossierMedical]="dossierMedical"></maladie-creation>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
