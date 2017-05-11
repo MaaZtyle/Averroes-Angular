@@ -39,6 +39,9 @@ export class MedecinService {
         //console.log(parsedToken.id);
 
 
+
+
+
         //set request params
         let params: URLSearchParams = new URLSearchParams();
         params.set("idMed", parsedToken.id);
@@ -62,6 +65,7 @@ export class MedecinService {
             .catch(this.handleError);
 
     }
+
 
     public getListPatients() : Observable<Patient[]>{
 

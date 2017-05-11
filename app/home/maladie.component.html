@@ -1,32 +1,48 @@
 
+<div class="container full-width">
+    <div class="row">
 
 <div id="maladies" *ngIf="dossierMedical">
     <h2>Maladies du patient</h2>
 
 
-    Voici toutes vos maladies :
+
+    <button class="btn btn-primary" (click)="lgModal3.show()">Ajouter</button>
+    <div class="table-responsive" >
+        <div class="table table-bordered" >
+            <div class="pre-scrollable  " >
+
+            <table id="myTable2" class="table table-hover">
+                <tr class="header">
+
+                    <th  onclick="sortTable(0,2)" style="width:5%;">Id</th>
+                    <th  onclick="sortTable(1,2)" style="width:50%;">Designation</th>
+                    <th  onclick="sortTable(2,2)" style="width:50%;">Description</th>
+                    <th  onclick="sortTable(3,2)" style="width:50%;">Date d'apparition</th>
+                    <th  onclick="sortTable(4,2)" style="width:45%;">Date de création</th>
+
+                </tr>
+
+                <tr id="maladie"  *ngFor="let maladie of maladies"(click)="onSelect(maladie)" (dblclick)="lgModal2.show()">
 
 
-    <select multiple class="form-control">
-
-        <option *ngFor="let maladie of maladies"(click)="onSelect(maladie)" (dblclick)="lgModal2.show()">
-
-                Id: {{ maladie.idMal }}
-                Designation: {{ maladie.designationMal }}
-                Description:{{ maladie.descriptionMal }}
-                Date d'apparition : {{ maladie.dateAppMal }}
-                Date de création :{{  maladie.dateCreationMal }}
+                    <td>{{ maladie.idMal }}</td>
+                    <td>{{ maladie.designationMal }}</td>
+                    <td>{{ maladie.descriptionMal }}</td>
+                    <td>{{ maladie.dateAppMal }}</td>
+                    <td>{{ maladie.dateCreationMal }}</td>
 
 
-            </option>
+                </tr>
 
+            </table>
+            </div>
+        </div>
 
-    </select>
-
-
+</div>
 
     <!--Large modal-->
-    <button class="btn btn-primary" (click)="lgModal3.show()">Ajouter</button>
+
 
     <div bsModal #lgModal2="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -96,4 +112,7 @@
 
 
 
+</div>
+
+    </div>
 </div>

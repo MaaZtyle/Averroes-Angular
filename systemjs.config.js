@@ -9,6 +9,8 @@
             'npm:': 'node_modules/',
             "ngx-bootstrap": "node_modules/ngx-bootstrap",
 
+
+
         },
 
         // map tells the System loader where to look for things
@@ -44,6 +46,7 @@
                 defaultExtension: 'js'
             },
             'ngx-bootstrap': { format: 'cjs', main: 'bundles/ngx-bootstrap.umd.js', defaultExtension: 'js' },
+
 
 
         }

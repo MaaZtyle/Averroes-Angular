@@ -13,10 +13,12 @@ export class AuthenticationService {
 
     constructor(private http: Http) {
         // set token if saved in local storage
+        //console.log("tttt");
         //var token = JSON.parse(localStorage.getItem('token'));
+
         //this.token = token;
 
-        localStorage.removeItem('token');
+
     }
 
     login(username: string, password: string): Observable<boolean> {
@@ -38,8 +40,8 @@ export class AuthenticationService {
                 let token = response.text();
 
                 //console.log( response.text);
-                console.log(username);
-                console.log(password);
+                //console.log(username);
+                //console.log(password);
 
 
                 if (token) {
@@ -57,7 +59,9 @@ export class AuthenticationService {
             })
             .catch(() => {
                 // this is executed on a 401 or on any error
+
                 return Observable.of(false);
+
             });
     }
     logout(): void {

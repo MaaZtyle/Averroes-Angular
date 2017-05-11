@@ -1,29 +1,58 @@
-<div id="medecin" *ngIf="medecin">
-    <h1>Page de démarrage du medecin</h1>
-    <p>Bonjour Docteur {{medecin.nomMed}} {{medecin.prenomMed}}</p>
-    <div>
-        Vous êtes authentifié !
 
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    </head>
+
+<body>
+
+
+<button type="button" class="btn btn-primary" id="bouton-ajout-medecin" href="#right-panel"> <span class="glyphicon glyphicon-cog"></span>Ajouter un medecin</button>
+<button type="button" class="btn btn-primary" id="bouton-ajout-patient" href="#right-panel"> <span class="glyphicon glyphicon-cog"></span>Ajouter un patient</button>
+
+
+    <button id="logout" [routerLink]="['/login']" class="btn btn-primary">Logout</button>
+    <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+
+
+
+<div id="medecin" *ngIf="medecin">
+
+    <h3>Bonjour Docteur {{medecin.nomMed}} {{medecin.prenomMed}}</h3>
+
 
 
     <div id="patients">
         Voici tous vos patients :
 
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Chercher par nom..">
+<div class="table table-bordered">
+        <table id="myTable1" class="table table-hover">
+            <tr class="header">
+
+                <th  onclick="sortTable(0,1)" style="width:5%;">Id</th>
+                <th  onclick="sortTable(1,1)" style="width:50%;">Nom</th>
+                <th  onclick="sortTable(2,1)" style="width:50%;">Prenom</th>
+                <th  onclick="sortTable(3,1)" style="width:50%;">email</th>
+                <th  onclick="sortTable(4,1)" style="width:45%;">mdp</th>
+
+            </tr>
+
+            <tr id="patient"  *ngFor="let patient of patients" (click)="onSelect(patient)" (dblclick)="lgModal.show()">
 
 
+                <td>{{ patient.idPat }}</td>
+                <td>{{ patient.nomPat }}</td>
+                <td>{{ patient.prenomPat }}</td>
+                <td>{{ patient.emailPat }}</td>
+                <td>{{ patient.mdpPat }}</td>
 
-        <select multiple class="form-control">
 
-            <option  *ngFor="let patient of patients" (click)="onSelect(patient)" (dblclick)="lgModal.show()">
-                Id Patient : {{ patient.idPat }}
-                Nom:  :{{ patient.nomPat }}
-                Prenom: {{ patient.prenomPat }}
-                email: {{ patient.emailPat }}
-                mdp : {{ patient.mdpPat }}
-                Id Medecin{{ patient.idMed }}
-            </option>
-            </select>
+            </tr>
+
+        </table>
+</div>
 
 
 
@@ -72,10 +101,7 @@
                                 <label>mdp:</label>
                                 <input [(ngModel)]="patientSelectionne.mdpPat" />
                             </div>
-                            <div>
-                                <label>Id Medecin:</label>
-                                <input [(ngModel)]="patientSelectionne.idMed" />
-                            </div>
+
 
                               </div>
 
@@ -87,12 +113,11 @@
 
 
 
-        <div class="form-group">
-         <button [routerLink]="['/login']" class="btn btn-primary">Logout</button>
-            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-        </div>
+
 
 
 </div>
 
     </div>
+</body>
+</html>

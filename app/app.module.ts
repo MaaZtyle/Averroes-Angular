@@ -5,8 +5,7 @@ import { HttpModule,JsonpModule } from '@angular/http';
 
 
 // used to create fake backend
-import { fakeBackendProvider } from './_helpers/index';
-import { MockBackend, MockConnection } from '@angular/http/testing';
+
 import { BaseRequestOptions } from '@angular/http';
 
 import { AppComponent }  from './app.component';
@@ -41,13 +40,17 @@ import {MaladieCreationComponent} from "./home/maladie-creation.component";
 
 
 
+
+
+
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
-        ModalModule.forRoot(),
-        AlertModule.forRoot(),
+        ModalModule.forRoot(),// pour fenettre modal
+        AlertModule.forRoot(),// pour alerte modal
+
 
         routing
     ],

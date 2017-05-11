@@ -41,7 +41,7 @@ export class MaladieCreationComponent {
         this.maladieService.ajouterMaladie(maladie)
             .subscribe(result => {
                 //console.log(result);
-
+                this.resetMessage();
                 if (result === true) {
 
                     this.messageOK = "Ajout Maladie ok";

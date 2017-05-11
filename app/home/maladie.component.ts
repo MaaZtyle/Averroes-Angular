@@ -52,8 +52,8 @@ export class MaladieComponent {
 
             })
     }
-    ngOnInit() {
-        // reset ordonnances
+    ngOnChanges() {
+        // reset maladies
         this.getMaladies();
     }
 
