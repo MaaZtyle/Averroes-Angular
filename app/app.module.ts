@@ -36,6 +36,7 @@ import {VaccinComponent} from "./home/vaccin.component";
 import {PatientDetailComponent} from "./home/patient-detail.component";
 import {ModalModule, AlertModule} from "ngx-bootstrap";
 import {MaladieCreationComponent} from "./home/maladie-creation.component";
+import {AllergieCreationComponent} from "./home/allergie-creation.component";
 
 
 
@@ -66,7 +67,8 @@ import {MaladieCreationComponent} from "./home/maladie-creation.component";
         OrdonnanceComponent,
         VaccinComponent,
         PatientDetailComponent,
-        MaladieCreationComponent
+        MaladieCreationComponent,
+        AllergieCreationComponent
 
 
 

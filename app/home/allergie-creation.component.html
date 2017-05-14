@@ -1,4 +1,4 @@
-<h2>Ajouter une Maladie au patient</h2>
+<h2>Ajouter une Allergie au patient</h2>
 <div>
     <label>Dossier :{{dossierMedical.idDos}}</label>
 
@@ -6,19 +6,24 @@
 
 <div>
     <label>Designation :</label>
-    <input [(ngModel)]="maladie.designationMal" />
+    <input [(ngModel)]="allergie.designationAll" />
 </div>
 <div>
     <label>Description :</label>
-    <input [(ngModel)]="maladie.descriptionMal" />
+    <input [(ngModel)]="allergie.descriptionAll" />
 </div>
 <div>
     <label>Date apparition :</label>
-    <input [(ngModel)]="maladie.dateAppMal" />
+    <input [(ngModel)]="allergie.dateAppAll" />
+</div>
+<div>
+    <label>Allergie en cours :</label>
+    <input type="checkbox" [(ngModel)]="allergie.etatAll" >
 </div>
 
 
-<button (click)="ajouterMaladie(maladie)">OK</button>
+
+<button (click)="ajouterAllergie(allergie)">OK</button>
 
 
 <div *ngIf="messageKO">

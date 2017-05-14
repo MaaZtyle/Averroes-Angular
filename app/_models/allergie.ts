@@ -10,6 +10,7 @@
 export class Allergie {
 
     idAll: number;
+    idDos: number;
     designationAll: string;
     descriptionAll: string;
     dateAppAll: string;

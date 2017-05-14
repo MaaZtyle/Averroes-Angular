@@ -7,7 +7,9 @@
 
 
 
-    <button class="btn btn-primary" (click)="lgModal3.show()">Ajouter</button>
+    <button class="btn btn-primary" (click)="lgModal1.show()"><span class="glyphicon glyphicon-plus"></span></button>
+
+
     <div class="table-responsive" >
         <div class="table table-bordered" >
             <div class="pre-scrollable  " >
@@ -20,10 +22,11 @@
                     <th  onclick="sortTable(2,2)" style="width:50%;">Description</th>
                     <th  onclick="sortTable(3,2)" style="width:50%;">Date d'apparition</th>
                     <th  onclick="sortTable(4,2)" style="width:45%;">Date de création</th>
+                    <th ><span class="glyphicon glyphicon-trash"></span></th>
 
                 </tr>
 
-                <tr id="maladie"  *ngFor="let maladie of maladies"(click)="onSelect(maladie)" (dblclick)="lgModal2.show()">
+                <tr id="maladie"   *ngFor="let maladie of maladies"(click)="onSelect(maladie)" (dblclick)="resetMessage();lgModal2.show()">
 
 
                     <td>{{ maladie.idMal }}</td>
@@ -31,6 +34,7 @@
                     <td>{{ maladie.descriptionMal }}</td>
                     <td>{{ maladie.dateAppMal }}</td>
                     <td>{{ maladie.dateCreationMal }}</td>
+                    <td>  <button class="btn btn-primary" (click)="onSelect(maladie);DeleteMaladie()"><span class="glyphicon glyphicon-trash"></span></button></td>
 
 
                 </tr>
@@ -44,12 +48,12 @@
     <!--Large modal-->
 
 
-    <div bsModal #lgModal2="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div bsModal #lgModal2="bs-modal" class="modal fade" tabindex="-1" role="dialog" [config]="{backdrop: 'static'}" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title pull-left">Detail-Maladie</h4>
-                    <button type="button" class="close pull-right" (click)="lgModal2.hide()" aria-label="Close">
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="lgModal2.hide()" >
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -57,41 +61,53 @@
                     <div id="detail" *ngIf="maladieSelectionne">
 
                         <div>
-                            <label>idMal :</label>
-                            <input [(ngModel)]="maladieSelectionne.idMal" />
+                            <label>ID : {{maladieSelectionne.idMal}}</label>
+
                         </div>
                         <div>
-                            <label>designationMal:</label>
-                            <input [(ngModel)]="maladieSelectionne.designationMal" />
+                            <label>Désignation :</label>
+                            <input [(ngModel)]="designationMal" />
                         </div>
                         <div>
-                            <label>dateAppMal:</label>
-                            <input [(ngModel)]="maladieSelectionne.dateAppMal" />
+                            <label>Date d'apparition:</label>
+                            <input [(ngModel)]="dateAppMal" />
                         </div>
                         <div>
-                            <label>descriptionMal:</label>
-                            <input [(ngModel)]="maladieSelectionne.descriptionMal" />
+                            <label>Description:</label>
+                            <input [(ngModel)]="descriptionMal" />
                         </div>
                         <div>
-                            <label>dateCreationMal:</label>
-                            <input [(ngModel)]=" maladieSelectionne.dateCreationMal" />
+                            <label>Date de création: <br>{{maladieSelectionne.dateCreationMal}}</label>
+
                         </div>
 
 
                     </div>
 
+                    <div *ngIf="!deleted">
+                    <button class="btn btn-primary" (click)="UpdateMaladie()"><span class="glyphicon glyphicon-pencil"></span></button>
+                    <button class="btn btn-primary" (click)="DeleteMaladie()"><span class="glyphicon glyphicon-trash"></span></button>
+                    </div>
+
+                    <div *ngIf="messageKO">
+                        <alert type="danger" [dismissOnTimeout]="2000">{{ messageKO }}</alert>
+                    </div>
+
+                    <div *ngIf="messageOK">
+                        <alert type="success" [dismissOnTimeout]="2000">{{ messageOK }}</alert>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
 
-    <div bsModal #lgModal3="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div bsModal #lgModal1="bs-modal" class="modal fade" tabindex="-1" role="dialog" [config]="{backdrop: 'static'} " aria-labelledby="myLargeModalLabel" aria-hidden="true" >
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title pull-left">Ajouter-Maladie</h4>
-                    <button type="button" class="close pull-right" (click)="lgModal3.hide();getMaladies()" aria-label="Close">
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="lgModal1.hide();getMaladies()" >
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -105,6 +121,7 @@
                     </div>
 
                 </div>
+
             </div>
         </div>
     </div>
@@ -116,3 +133,4 @@
 
     </div>
 </div>
+

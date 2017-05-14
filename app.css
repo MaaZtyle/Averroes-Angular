@@ -22,6 +22,12 @@ th {
     left: 0;
 }
 
+label {
+    display: inline-block;
+    width:150px;
+    text-align: left;
+}
+
 #logout{
     position: absolute;
     top: 0;
@@ -31,7 +37,7 @@ th {
 
 #medecin{
 
-    position: absolute;
+    position: relative;
     top: 100px;
     right: 0;
 

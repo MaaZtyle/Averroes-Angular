@@ -27,15 +27,15 @@
         Voici tous vos patients :
 
         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Chercher par nom..">
-<div class="table table-bordered">
+<div class="table table-bordered" >
         <table id="myTable1" class="table table-hover">
             <tr class="header">
 
-                <th  onclick="sortTable(0,1)" style="width:5%;">Id</th>
-                <th  onclick="sortTable(1,1)" style="width:50%;">Nom</th>
-                <th  onclick="sortTable(2,1)" style="width:50%;">Prenom</th>
-                <th  onclick="sortTable(3,1)" style="width:50%;">email</th>
-                <th  onclick="sortTable(4,1)" style="width:45%;">mdp</th>
+                <th style="width:5%;">Id</th>
+                <th   style="width:50%;">Nom</th>
+                <th   style="width:50%;">Prenom</th>
+                <th   style="width:50%;">email</th>
+                <th   style="width:45%;">mdp</th>
 
             </tr>
 
@@ -67,7 +67,7 @@
 
 
         <!--Large modal-->
-        <button class="btn btn-primary" (click)="lgModal.show()">Detail-patient</button>
+       <!-- <button class="btn btn-primary" (click)="lgModal.show()">Detail-patient</button>-->
 
         <div bsModal #lgModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">

@@ -67,5 +67,95 @@ export class AllergieService{
     }
 
 
+    ajouterAllergie(allergie: Allergie){
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': localStorage.getItem('token')});
+        let options = new RequestOptions({ headers: headers });
+
+        //set request params
+        //let params: URLSearchParams = new URLSearchParams();
+
+        //console.log(allergie);
+        //params.set("idDos", idDos);
+        //params.set("designationAll",allergie.designationAll )
+        //params.set("descriptionAll",allergie.descriptionAll)
+        //params.set("dateAppAll",allergie.dateAppAll)
+        // params.set("role", parsedToken.role);
+        //options.url = params;
+        let url = "http://localhost:8080/AVERROES_MIDDLEWARE/ws/dossiermedical/allergie/";
+
+        return this.http
+            .post(url, JSON.stringify(allergie),{headers: headers})
+            .map((response: Response) => {
+                return true;
+
+            })
+
+            .catch(() => {
+                // this is executed on a 401 or on any error
+                return Observable.of(false);
+            });
+
+    }
+    updateAllergie(allergie: Allergie): Observable<any>{
+
+        let headers = new Headers({ 'Authorization': localStorage.getItem('token')});
+        let options = new RequestOptions({ headers: headers });
+
+        let url = "http://localhost:8080/AVERROES_MIDDLEWARE/ws/dossiermedical/allergie/";
+
+        return this.http
+            .put(url, JSON.stringify(allergie),{headers: headers})
+            .map((response: Response) => {
+
+                return true;
+
+            })
+
+            .catch(() => {
+                // this is executed on a 401 or on any error
+                return Observable.of(false);
+            });
+
+
+    }
+
+
+    deleteAllergie(idAll: number): Observable<any>{
+
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': localStorage.getItem('token')});
+
+        let options = new RequestOptions({ headers: headers});
+
+        //set request params
+        let params: URLSearchParams = new URLSearchParams();
+        params.set("idAll", idAll.toString());
+        // params.set("role", parsedToken.role);
+        options.search = params;
+
+
+        //let options = new RequestOptions({headers: headers, idAll: idAll });
+
+        let url = "http://localhost:8080/AVERROES_MIDDLEWARE/ws/dossiermedical/allergie/";
+
+        return this.http
+            .delete(url, options)
+            .map((response: Response) => {
+                return true;
+            })
+
+            .catch(() => {
+                // this is executed on a 401 or on any error
+                return Observable.of(false);
+            });
+
+
+
+
+    }
+
+
+
 
 }
