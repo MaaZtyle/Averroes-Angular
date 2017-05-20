@@ -4,7 +4,6 @@ import { FormsModule }    from '@angular/forms';
 import { HttpModule,JsonpModule } from '@angular/http';
 
 
-// used to create fake backend
 
 import { BaseRequestOptions } from '@angular/http';
 
@@ -37,11 +36,10 @@ import {PatientDetailComponent} from "./home/patient-detail.component";
 import {ModalModule, AlertModule} from "ngx-bootstrap";
 import {MaladieCreationComponent} from "./home/maladie-creation.component";
 import {AllergieCreationComponent} from "./home/allergie-creation.component";
+import {AntecedentCreationComponent} from "./home/antecedent-creation.component";
 
-
-
-
-
+import {} from "jquery";
+import {VaccinCreationComponent} from "./home/vaccin-creation.component";
 
 
 @NgModule({
@@ -51,6 +49,8 @@ import {AllergieCreationComponent} from "./home/allergie-creation.component";
         HttpModule,
         ModalModule.forRoot(),// pour fenettre modal
         AlertModule.forRoot(),// pour alerte modal
+
+
 
 
         routing
@@ -68,7 +68,9 @@ import {AllergieCreationComponent} from "./home/allergie-creation.component";
         VaccinComponent,
         PatientDetailComponent,
         MaladieCreationComponent,
-        AllergieCreationComponent
+        AllergieCreationComponent,
+        AntecedentCreationComponent,
+        VaccinCreationComponent
 
 
 

@@ -8,6 +8,7 @@
             // paths serve as alias
             'npm:': 'node_modules/',
             "ngx-bootstrap": "node_modules/ngx-bootstrap",
+            'jquery':                     'node_modules/jquery/dist/jquery.js'
 
 
 
@@ -28,6 +29,9 @@
             '@angular/http/testing': 'npm:@angular/http/bundles/http-testing.umd.js',
             '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
             '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+            'moment': 'node_modules/moment',
+
+
 
 
 
@@ -47,7 +51,7 @@
             },
             'ngx-bootstrap': { format: 'cjs', main: 'bundles/ngx-bootstrap.umd.js', defaultExtension: 'js' },
 
-
+            'moment': { defaultExtension: 'js' },
 
         }
     });

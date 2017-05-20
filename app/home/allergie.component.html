@@ -69,15 +69,15 @@
                                 </div>
                                 <div>
                                     <label>Désignation :</label>
-                                    <input [(ngModel)]="designationAll" />
+                                    <input [(ngModel)]="designationAll" required />
                                 </div>
                                 <div>
                                     <label>Date d'apparition:</label>
-                                    <input [(ngModel)]="dateAppAll" />
+                                    <input type="date" [(ngModel)]="dateAppAll" required />
                                 </div>
                                 <div>
                                     <label>Description:</label>
-                                    <input [(ngModel)]="descriptionAll" />
+                                    <input [(ngModel)]="descriptionAll" required />
                                 </div>
                                 <div>
                                     <label>Date de création: {{allergieSelectionne.dateCreationAll}}</label>
@@ -96,11 +96,11 @@
                                 </div>
 
                             <div *ngIf="messageKO">
-                                <alert type="danger" [dismissOnTimeout]="5000">{{ messageKO }}</alert>
+                                <alert type="danger" [dismissOnTimeout]="2000">{{ messageKO }}</alert>
                             </div>
 
                             <div *ngIf="messageOK">
-                                <alert type="success" [dismissOnTimeout]="5000">{{ messageOK }}</alert>
+                                <alert type="success" [dismissOnTimeout]="2000">{{ messageOK }}</alert>
                             </div>
                         </div>
                     </div>

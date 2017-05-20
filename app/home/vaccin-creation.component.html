@@ -1,0 +1,52 @@
+<h2>Ajouter un vaccin au patient</h2>
+<div>
+    <label>Dossier :{{dossierMedical.idDos}}</label>
+
+</div>
+
+<div>
+    <label>Nom du vaccin :</label>
+
+    <select [(ngModel)]="vaccinModelSelectionne">
+        <option *ngFor="let vaccin of vaccinsModel" [ngValue]="vaccin">
+            {{vaccin.nom}}
+        </option>
+    </select>
+
+<div>
+    <label>Description :</label>
+    <input [(ngModel)]="vaccin.descriptionVac"  required/>
+</div>
+<div>
+    <label>Date du dernier vaccin :</label>
+    <input  type="date" [(ngModel)]="vaccin.dateDernierVac"  required/>
+</div>
+<div>
+    <label>Date du prochain vaccin :</label>
+    <input  type="date" [(ngModel)]="vaccin.dateProchainVac"  required/>
+</div>
+
+<div>
+    <label>Alerte Patient :</label>
+    <input type="checkbox" [(ngModel)]="vaccin.alertePatientVac" >
+</div>
+
+
+
+<div>
+    <label>Alerte Medecin :</label>
+    <input type="checkbox" [(ngModel)]="vaccin.alerteMedecinVac" >
+</div>
+
+
+
+
+<button (click)="ajouterVaccin(vaccin)">OK</button>
+
+<div *ngIf="messageKO">
+    <alert type="danger" [dismissOnTimeout]="2000">{{ messageKO }}</alert>
+</div>
+
+<div *ngIf="messageOK">
+    <alert type="success" [dismissOnTimeout]="2000">{{ messageOK }}</alert>
+</div>

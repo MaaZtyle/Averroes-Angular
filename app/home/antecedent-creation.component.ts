@@ -4,53 +4,54 @@
  */
 
 import {Component, Input} from "@angular/core";
-import {Maladie} from "../_models/maladie";
-import {MaladieService} from "../_services/maladie.service";
+import {Antecedent} from "../_models/antecedent";
+import {AntecedentService} from "../_services/antecedent.service";
 import {DossierMedical} from "../_models/dossierMedical";
 
 @Component({
 
-    selector: 'maladie-creation',
+    selector: 'antecedent-creation',
     moduleId: module.id,
 
-    templateUrl: 'maladie-creation.component.html',
+    templateUrl: 'antecedent-creation.component.html',
 
 })
 
-export class MaladieCreationComponent {
+export class AntecedentCreationComponent {
 
 
     messageOK ='';
     messageKO='';
 
+    antecedent: Antecedent = new Antecedent();
 
-    maladie: Maladie = new Maladie();
+
 
     @Input()
     dossierMedical: DossierMedical;
 
 
-    constructor(private maladieService: MaladieService) { }
+    constructor(private antecedentService: AntecedentService) { }
 
-    ajouterMaladie(maladie: Maladie) {
-
-
-        console.log(this.messageOK );
-        console.log(this.messageKO );
+    ajouterAntecedent(antecedent: Antecedent) {
 
 
 
-        maladie.idDos=this.dossierMedical.idDos;
-        //console.log(maladie);
+
+
+        antecedent.idDos=this.dossierMedical.idDos;
+
         this.resetMessage();
-        this.maladieService.ajouterMaladie(maladie)
+        //console.log(maladie);
+        this.antecedentService.ajouterAntecedent(antecedent)
             .subscribe(result => {
                 //console.log(result);
 
                 if (result === true) {
 
-                    this.messageOK = "Ajout Maladie ok";
-                    this.maladie=new Maladie();
+                    this.messageOK = "Ajout Antecedent ok";
+                    this.antecedent=new Antecedent();
+
 
 
 
@@ -71,14 +72,16 @@ export class MaladieCreationComponent {
         this.messageOK ='';
         this.messageKO='';
 
-
-}
+    }
 
 
 
     ngOnInit(){
         this.messageOK ='';
         this.messageKO='';
+
+
+
 
     }
 

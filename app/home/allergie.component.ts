@@ -26,7 +26,7 @@ export class AllergieComponent {
 
     allergieSelectionne: Allergie;
 
-    // Maladie sélectionnée
+
     allergie: Allergie = new Allergie;
     
     // variables temporaire pour pas modifier l'allergie selectionnée du model, car sinon ca va modifier laliste
@@ -55,7 +55,6 @@ export class AllergieComponent {
         // Je recupère les valeurs de la allergie selectionnée au click
 
         this.idAll=this.allergieSelectionne.idAll;
-
         this.designationAll=this.allergieSelectionne.designationAll;
         this.dateAppAll=this.allergieSelectionne.dateAppAll;
         this.descriptionAll=this.allergieSelectionne.descriptionAll;

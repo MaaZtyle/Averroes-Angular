@@ -1,6 +1,6 @@
 /**
  * Created by Maazouza on 04/05/2017.
- */
+*/
 import {Observable} from "rxjs/Rx";
 import {Http, Headers, RequestOptions, Response,URLSearchParams} from "@angular/http";
 import {Vaccin} from "../_models/vaccin";
@@ -15,7 +15,7 @@ export class VaccinService{
     }
 
 
-    getMaladies(idDos: string): Observable<Vaccin[]> {
+    getVaccins(idDos: string): Observable<Vaccin[]> {
 
 
         // add authorization header with jwt token
@@ -65,6 +65,87 @@ export class VaccinService{
         console.error(errMsg);
         return Observable.throw(errMsg);
     }
+
+
+    ajouterVaccin(vaccin: Vaccin){
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': localStorage.getItem('token')});
+        let options = new RequestOptions({ headers: headers });
+
+
+        let url = "http://localhost:8080/AVERROES_MIDDLEWARE/ws/dossiermedical/vaccin/";
+
+        return this.http
+            .post(url, JSON.stringify(vaccin),{headers: headers})
+            .map((response: Response) => {
+                return true;
+
+            })
+
+            .catch(() => {
+                // this is executed on a 401 or on any error
+                return Observable.of(false);
+            });
+
+    }
+    updateVaccin(vaccin: Vaccin): Observable<any>{
+
+        let headers = new Headers({ 'Authorization': localStorage.getItem('token')});
+        let options = new RequestOptions({ headers: headers });
+
+        let url = "http://localhost:8080/AVERROES_MIDDLEWARE/ws/dossiermedical/vaccin/";
+
+        return this.http
+            .put(url, JSON.stringify(vaccin),{headers: headers})
+            .map((response: Response) => {
+
+                return true;
+
+            })
+
+            .catch(() => {
+                // this is executed on a 401 or on any error
+                return Observable.of(false);
+            });
+
+
+    }
+
+
+    deleteVaccin(idVac: number): Observable<any>{
+
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': localStorage.getItem('token')});
+
+        let options = new RequestOptions({ headers: headers});
+
+        //set request params
+        let params: URLSearchParams = new URLSearchParams();
+        params.set("idVac", idVac.toString());
+        // params.set("role", parsedToken.role);
+        options.search = params;
+
+
+        //let options = new RequestOptions({headers: headers, idAll: idAll });
+
+        let url = "http://localhost:8080/AVERROES_MIDDLEWARE/ws/dossiermedical/vaccin/";
+
+        return this.http
+            .delete(url, options)
+            .map((response: Response) => {
+                return true;
+            })
+
+            .catch(() => {
+                // this is executed on a 401 or on any error
+                return Observable.of(false);
+            });
+
+
+
+
+    }
+
 
 
 

@@ -67,5 +67,86 @@ export class AntecedentService{
     }
 
 
+    ajouterAntecedent(antecedent: Antecedent){
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': localStorage.getItem('token')});
+        let options = new RequestOptions({ headers: headers });
+
+
+        let url = "http://localhost:8080/AVERROES_MIDDLEWARE/ws/dossiermedical/antecedent/";
+
+        return this.http
+            .post(url, JSON.stringify(antecedent),{headers: headers})
+            .map((response: Response) => {
+                return true;
+
+            })
+
+            .catch(() => {
+                // this is executed on a 401 or on any error
+                return Observable.of(false);
+            });
+
+    }
+    updateAntecedent(antecedent: Antecedent): Observable<any>{
+
+        let headers = new Headers({ 'Authorization': localStorage.getItem('token')});
+        let options = new RequestOptions({ headers: headers });
+
+        let url = "http://localhost:8080/AVERROES_MIDDLEWARE/ws/dossiermedical/antecedent/";
+
+        return this.http
+            .put(url, JSON.stringify(antecedent),{headers: headers})
+            .map((response: Response) => {
+
+                return true;
+
+            })
+
+            .catch(() => {
+                // this is executed on a 401 or on any error
+                return Observable.of(false);
+            });
+
+
+    }
+
+
+    deleteAntecedent(idAnt: number): Observable<any>{
+
+        // add authorization header with jwt token
+        let headers = new Headers({ 'Authorization': localStorage.getItem('token')});
+
+        let options = new RequestOptions({ headers: headers});
+
+        //set request params
+        let params: URLSearchParams = new URLSearchParams();
+        params.set("idAnt", idAnt.toString());
+        // params.set("role", parsedToken.role);
+        options.search = params;
+
+
+        //let options = new RequestOptions({headers: headers, idAll: idAll });
+
+        let url = "http://localhost:8080/AVERROES_MIDDLEWARE/ws/dossiermedical/antecedent/";
+
+        return this.http
+            .delete(url, options)
+            .map((response: Response) => {
+                return true;
+            })
+
+            .catch(() => {
+                // this is executed on a 401 or on any error
+                return Observable.of(false);
+            });
+
+
+
+
+    }
+
+
+
 
 }

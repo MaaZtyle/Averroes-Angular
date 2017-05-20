@@ -6,6 +6,7 @@
 export class Antecedent {
 
     idAnt: number;
+    idDos: number;
     dateAnt: string;
     descriptionAnt: string;
     commentaireAnt: string;

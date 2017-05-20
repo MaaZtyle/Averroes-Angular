@@ -6,15 +6,15 @@
 
 <div>
     <label>Designation :</label>
-    <input [(ngModel)]="allergie.designationAll" />
+    <input [(ngModel)]="allergie.designationAll" required />
 </div>
 <div>
     <label>Description :</label>
-    <input [(ngModel)]="allergie.descriptionAll" />
+    <input [(ngModel)]="allergie.descriptionAll" required />
 </div>
 <div>
     <label>Date apparition :</label>
-    <input [(ngModel)]="allergie.dateAppAll" />
+    <input type="date" [(ngModel)]="allergie.dateAppAll" required/>
 </div>
 <div>
     <label>Allergie en cours :</label>

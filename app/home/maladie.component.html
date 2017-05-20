@@ -14,7 +14,7 @@
         <div class="table table-bordered" >
             <div class="pre-scrollable  " >
 
-            <table id="myTable2" class="table table-hover">
+            <table id="myTable2" class="table table-hover ">
                 <tr class="header">
 
                     <th  onclick="sortTable(0,2)" style="width:5%;">Id</th>
@@ -66,20 +66,21 @@
                         </div>
                         <div>
                             <label>Désignation :</label>
-                            <input [(ngModel)]="designationMal" />
+                            <input [(ngModel)]="designationMal" required />
                         </div>
                         <div>
                             <label>Date d'apparition:</label>
-                            <input [(ngModel)]="dateAppMal" />
+                            <input type="date" [(ngModel)]="dateAppMal" required />
                         </div>
                         <div>
                             <label>Description:</label>
-                            <input [(ngModel)]="descriptionMal" />
+                            <input [(ngModel)]="descriptionMal" required />
                         </div>
                         <div>
                             <label>Date de création: <br>{{maladieSelectionne.dateCreationMal}}</label>
 
                         </div>
+
 
 
                     </div>

@@ -1,0 +1,37 @@
+<h2>Ajouter un Antécédent au patient</h2>
+<div>
+    <label>Dossier :{{dossierMedical.idDos}}</label>
+
+</div>
+
+<div>
+    <label>Designation :</label>
+    <input [(ngModel)]="antecedent.descriptionAnt" required />
+</div>
+<div>
+    <label>Sujet :</label>
+    <input [(ngModel)]="antecedent.sujetAnt" required/>
+</div>
+
+
+<div>
+    <label>Date apparition :</label>
+    <input type="date" [(ngModel)]="antecedent.dateAnt" required/>
+</div>
+
+<div>
+    <label>Commentaire :</label>
+    <input [(ngModel)]="antecedent.commentaireAnt" required/>
+</div>
+
+
+<button (click)="ajouterAntecedent(antecedent)">OK</button>
+
+
+<div *ngIf="messageKO">
+    <alert type="danger" [dismissOnTimeout]="2000">{{ messageKO }}</alert>
+</div>
+
+<div *ngIf="messageOK">
+    <alert type="success" [dismissOnTimeout]="2000">{{ messageOK }}</alert>
+</div>

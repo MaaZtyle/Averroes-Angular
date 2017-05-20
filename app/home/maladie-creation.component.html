@@ -6,19 +6,21 @@
 
 <div>
     <label>Designation :</label>
-    <input [(ngModel)]="maladie.designationMal" />
+    <input [(ngModel)]="maladie.designationMal"  required/>
+
 </div>
 <div>
     <label>Description :</label>
-    <input [(ngModel)]="maladie.descriptionMal" />
+    <input [(ngModel)]="maladie.descriptionMal"  required/>
 </div>
 <div>
     <label>Date apparition :</label>
-    <input [(ngModel)]="maladie.dateAppMal" />
+    <input  [(ngModel)]="maladie.dateAppMal"  required/>
 </div>
 
 
 <button (click)="ajouterMaladie(maladie)">OK</button>
+
 
 
 <div *ngIf="messageKO">

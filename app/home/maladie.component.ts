@@ -9,6 +9,8 @@ import {MaladieService} from "../_services/maladie.service";
 import {Maladie} from "../_models/maladie";
 
 
+
+
 @Component({
 
     selector: 'maladies',
@@ -22,6 +24,7 @@ export class MaladieComponent {
 
     @Input()
     dossierMedical: DossierMedical;
+
 
     // variables temporaire pour pas modifier la maladie selectionnée du model, car sinon ca va modifier laliste
     // sans que la maladie soit modifiée en base

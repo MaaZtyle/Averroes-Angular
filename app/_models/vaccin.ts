@@ -6,6 +6,7 @@
 export class Vaccin {
 
     idVac: number;
+    idDos: number;
     nomVac: string;
     descriptionVac: string;
     dateDernierVac: string;
