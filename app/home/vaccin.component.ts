@@ -8,6 +8,8 @@ import {Component, Input, OnInit} from "@angular/core";
 import {DossierMedical} from "../_models/dossierMedical";
 import {VaccinService} from "../_services/vaccin.service";
 import {Vaccin} from "../_models/vaccin";
+import moment = require("moment/moment");
+
 
 
 @Component({
@@ -23,9 +25,20 @@ export class VaccinComponent {
 
     @Input()
     dossierMedical: DossierMedical;
+    vaccinsModel =[
+
+        {nom: 'diphtérie', rappel:5},
+        {nom:'tétanos', rappel:2},
+        {nom:'grippe', rappel:3},
+        {nom:'poliomyélite', rappel:4},
+        {nom:'fièvre jaune', rappel:5},
+        {nom:'autre', rappel:6} ];
 
 
-    vaccinSelectionne: Vaccin;
+    vaccinSelectionne: any;
+    vaccinModelSelectionne: any;
+
+
     
     vaccins: Vaccin[];
 
@@ -47,7 +60,11 @@ export class VaccinComponent {
     messageOK ='';
     messageKO='';
 
-    constructor(private vaccinService: VaccinService) { }
+    constructor(private vaccinService: VaccinService) {
+
+
+
+    }
 
     // Réagir à la sélection d'un vaccin dans la liste
     onSelect(vaccin: Vaccin) {
@@ -59,14 +76,50 @@ export class VaccinComponent {
         this.idVac=this.vaccinSelectionne.idVac;
 
         this.nomVac=this.vaccinSelectionne.nomVac;
+
+        //console.log( this.vaccinModelSelectionne);
+        //console.log( this.vaccinSelectionne.descriptionVac);
+        // pour chercher dans mon model le nom du vaccin
+        this.vaccinModelSelectionne = this.vaccinsModel.find(c => c.nom == this.nomVac);
+
         this.descriptionVaccin=this.vaccinSelectionne.descriptionVac;
-        this.dateDernierVaccin=this.vaccinSelectionne.dateDernierVac;
-        this.dateProchainVaccin=this.vaccinSelectionne.dateProchainVac;
+
+         var dateDernierVaccin= moment(this.vaccinSelectionne.dateDernierVac,"DD-MM-YYYY");
+         var dateProchainVaccin= moment(this.vaccinSelectionne.dateProchainVac,"DD-MM-YYYY");
+        //console.log(this.vaccinSelectionne.dateDernierVac);
+        //console.log(this.vaccinSelectionne.dateProchainVac);
+
+        /*if(this.vaccinModelSelectionne === undefined){
+            console.log( vaccin.dateProchainVac);}
+
+        else {
+            console.log(this.vaccinModelSelectionne);
+            var dateProchainVaccin = dateDernierVaccin.add(this.vaccinModelSelectionne.rappel, 'd');
+            console.log(dateProchainVaccin);
+        }
+        //var dateProchainVaccin = dateDernierVaccin.add(this.vaccinModelSelectionne.rappel, 'd');
+*/
+
+        this.dateDernierVaccin=dateDernierVaccin.format('YYYY-MM-DD');
+          this.dateProchainVaccin=dateProchainVaccin.format('YYYY-MM-DD');
+
         this.alertePatientVaccin = this.vaccinSelectionne.alertePatientVac;
         this.alerteMedecinVaccin = this.vaccinSelectionne.alerteMedecinVac;
 
 
        
+    }
+
+    onSelect2(vaccinModelSelectionne: Vaccin){
+
+
+     // a la selection dun nouvell emaladie, je recalcule la date de fin
+
+        var dateDernierVaccin = moment(this.dateDernierVaccin);
+        var dateProchainVaccin = dateDernierVaccin.add(this.vaccinModelSelectionne.rappel, 'd');
+        this.dateProchainVaccin = dateProchainVaccin.format('YYYY-MM-DD');
+
+
     }
     
     getVaccins() {
@@ -87,13 +140,27 @@ export class VaccinComponent {
 // je construis mon vaccin
 
         this.vaccin.idVac=this.idVac;
-        this.vaccin.nomVac=this.nomVac;
+        this.vaccin.nomVac=this.vaccinModelSelectionne.nom;
         this.vaccin.descriptionVac=this.descriptionVaccin;
-        this.vaccin.dateDernierVac=this.dateDernierVaccin;
-        this.vaccin.alertePatientVac= this.alertePatientVaccin;
-        this.vaccin.alertePatientVac= this.alerteMedecinVaccin;
 
-        console.log(this.vaccin.idVac);
+        console.log(this.dateDernierVaccin);
+        console.log(this.dateProchainVaccin);
+
+        var dateDernierVaccin= moment(this.dateDernierVaccin);
+        var dateProchainVaccin= moment(this.dateProchainVaccin);
+
+
+
+        this.vaccin.dateDernierVac=dateDernierVaccin.format('DD-MM-YYYY');
+        this.vaccin.dateProchainVac=dateProchainVaccin.format('DD-MM-YYYY');
+
+        this.vaccin.alertePatientVac= this.alertePatientVaccin;
+        this.vaccin.alerteMedecinVac= this.alerteMedecinVaccin;
+
+
+
+
+
 
         this.resetMessage();
         this.vaccinService.updateVaccin(this.vaccin)

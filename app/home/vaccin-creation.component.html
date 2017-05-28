@@ -4,49 +4,54 @@
 
 </div>
 
+
+
 <div>
     <label>Nom du vaccin :</label>
 
-    <select [(ngModel)]="vaccinModelSelectionne">
+    <select [(ngModel)]="vaccinModelSelectionne" (change)="onSelect(vaccin)">
         <option *ngFor="let vaccin of vaccinsModel" [ngValue]="vaccin">
             {{vaccin.nom}}
         </option>
     </select>
 
-<div>
-    <label>Description :</label>
-    <input [(ngModel)]="vaccin.descriptionVac"  required/>
-</div>
-<div>
-    <label>Date du dernier vaccin :</label>
-    <input  type="date" [(ngModel)]="vaccin.dateDernierVac"  required/>
-</div>
-<div>
-    <label>Date du prochain vaccin :</label>
-    <input  type="date" [(ngModel)]="vaccin.dateProchainVac"  required/>
-</div>
-
-<div>
-    <label>Alerte Patient :</label>
-    <input type="checkbox" [(ngModel)]="vaccin.alertePatientVac" >
-</div>
+    <div>
+        <label>Description :</label>
+        <input [(ngModel)]="vaccin.descriptionVac"   />
+    </div>
 
 
 
-<div>
-    <label>Alerte Medecin :</label>
-    <input type="checkbox" [(ngModel)]="vaccin.alerteMedecinVac" >
-</div>
+    <div>
+        <label>Date du dernier vaccin :</label>
+        <input type="date" [(ngModel)]="vaccin.dateDernierVac" (change)="onSelect(vaccin)" required/>
+    </div>
+    <div id="dateProchainVaccin" *ngIf="vaccin.dateDernierVac">
+        <label>Date du prochain vaccin :</label>
+        <input type="date" [(ngModel)]="vaccin.dateProchainVac" required/>
+    </div>
+
+    <div>
+        <label>Alerte Patient :</label>
+        <input type="checkbox" [(ngModel)]="vaccin.alertePatientVac">
+    </div>
 
 
+    <div>
+        <label>Alerte Medecin :</label>
+        <input type="checkbox" [(ngModel)]="vaccin.alerteMedecinVac">
+    </div>
 
 
-<button (click)="ajouterVaccin(vaccin)">OK</button>
+    <button (click)="ajouterVaccin(vaccin)">OK</button>
 
-<div *ngIf="messageKO">
-    <alert type="danger" [dismissOnTimeout]="2000">{{ messageKO }}</alert>
-</div>
+    <div *ngIf="messageKO">
+        <alert type="danger" [dismissOnTimeout]="2000">{{ messageKO }}</alert>
+    </div>
 
-<div *ngIf="messageOK">
-    <alert type="success" [dismissOnTimeout]="2000">{{ messageOK }}</alert>
-</div>
+    <div *ngIf="messageOK">
+        <alert type="success" [dismissOnTimeout]="2000">{{ messageOK }}</alert>
+    </div>
+
+    </div>
+

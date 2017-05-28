@@ -40,7 +40,7 @@
                                 <td>{{ vaccin.nomVac  }}</td>
                                 <td>{{ vaccin.descriptionVac }}</td>
                                 <td>{{ vaccin.dateDernierVac  }}</td>
-                                <td>{{ vaccin.dateProchainVac }}</td>
+                                <td>{{vaccin.dateProchainVac }}</td>
                                 <td>{{vaccin.dateCreationVac}}</td>
                                 <td>{{vaccin.alertePatientVac}}</td>
                                 <td>{{vaccin.alerteMedecinVac}}</td>
@@ -82,10 +82,13 @@
                                     <label>ID : {{vaccinSelectionne.idVac}}</label>
 
                                 </div>
-                                <div>
-                                    <label>Désignation :</label>
-                                    <input [(ngModel)]="nomVac" required />
-                                </div>
+                                <label>Nom du vaccin:</label>
+                                <select [(ngModel)]="vaccinModelSelectionne" (change)="onSelect2(vaccin)">
+                                    <option *ngFor="let vaccin of vaccinsModel" [ngValue]="vaccin">
+                                        {{vaccin.nom}}
+                                    </option>
+                                </select>
+
                                  <div>
                                     <label>Description:</label>
                                     <input [(ngModel)]="descriptionVaccin" required />

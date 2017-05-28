@@ -33,7 +33,7 @@ export class VaccinCreationComponent {
 
     vaccinsModel =[
 
-        {nom: 'diphtérie', rappel:1},
+        {nom: 'diphtérie', rappel:5},
         {nom:'tétanos', rappel:2},
         {nom:'grippe', rappel:3},
         {nom:'poliomyélite', rappel:4},
@@ -42,7 +42,7 @@ export class VaccinCreationComponent {
 
 
 
-    vaccinModelSelectionne;
+    vaccinModelSelectionne: any;
 
     vaccin: Vaccin = new Vaccin();
 
@@ -54,22 +54,43 @@ export class VaccinCreationComponent {
 
     constructor(private vaccinService: VaccinService) { }
 
+    onSelect(vaccin: Vaccin) {
+
+        var dateDernierVaccin = moment(this.vaccin.dateDernierVac);
+        var dateProchainVaccin = dateDernierVaccin.add(this.vaccinModelSelectionne.rappel, 'd');
+        //console.log(dateDernierVaccin);
+        //console.log(dateProchainVaccin);
+        this.vaccin.dateProchainVac = dateProchainVaccin.format('YYYY-MM-DD');
+
+
+    }
+
     ajouterVaccin(vaccin: Vaccin) {
 
         vaccin.idDos=this.dossierMedical.idDos;
+        vaccin.nomVac=this.vaccinModelSelectionne.nom;
 
+        var dateDernierVaccin= moment(this.vaccin.dateDernierVac);
+        var dateProchainVaccin= moment(this.vaccin.dateProchainVac);
+
+
+        vaccin.dateDernierVac=dateDernierVaccin.format('DD-MM-YYYY');
+        vaccin.dateProchainVac=dateProchainVaccin.format('DD-MM-YYYY');
         this.resetMessage();
 
 
         //vaccin.nomVac= this.vaccinModelSelectionne.nom;
         //console.log(vaccin.dateDernierVac);
 
-        //var dateFormat = moment(vaccin.dateDernierVac).format("DD-MM-YYYY");
 
-        console.log(this.vaccinModelSelectionne.nom)       // var newDateObj = moment(dateFormat).add( ,'days').calendar();
-        console.log(this.vaccinModelSelectionne.rappel)
 
-        console.log(newDateObj);
+
+
+
+        //console.log(this.vaccinModelSelectionne.nom)       // var newDateObj = moment(dateFormat).add( ,'days').calendar();
+        //console.log(this.vaccinModelSelectionne.rappel)
+
+        //console.log(newDateObj);
         this.vaccinService.ajouterVaccin(vaccin)
             .subscribe(result => {
                 //console.log(result);
