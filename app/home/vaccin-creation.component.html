@@ -17,7 +17,8 @@
 
     <div>
         <label>Description :</label>
-        <input [(ngModel)]="vaccin.descriptionVac"   />
+        <input [(ngModel)]="vaccin.descriptionVac" name="description"  #description="ngModel" required/>
+        <div *ngIf="description.errors?.required">required error</div>
     </div>
 
 
@@ -43,7 +44,8 @@
     </div>
 
 
-    <button (click)="ajouterVaccin(vaccin)">OK</button>
+    <button (click)="ajouterVaccin(vaccin);">OK</button>
+
 
     <div *ngIf="messageKO">
         <alert type="danger" [dismissOnTimeout]="2000">{{ messageKO }}</alert>

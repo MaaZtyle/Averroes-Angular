@@ -38,6 +38,10 @@ import {MaladieCreationComponent} from "./home/maladie-creation.component";
 import {AllergieCreationComponent} from "./home/allergie-creation.component";
 import {AntecedentCreationComponent} from "./home/antecedent-creation.component";
 
+//pour la validation de champs
+
+import { CustomFormsModule } from 'ng2-validation'
+
 import {} from "jquery";
 import {VaccinCreationComponent} from "./home/vaccin-creation.component";
 
@@ -49,6 +53,7 @@ import {VaccinCreationComponent} from "./home/vaccin-creation.component";
         HttpModule,
         ModalModule.forRoot(),// pour fenettre modal
         AlertModule.forRoot(),// pour alerte modal
+        CustomFormsModule,// pour required
 
 
 

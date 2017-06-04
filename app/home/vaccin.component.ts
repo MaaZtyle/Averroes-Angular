@@ -41,6 +41,7 @@ export class VaccinComponent {
 
     
     vaccins: Vaccin[];
+    vaccinsArchives: Vaccin[];
 
 
     vaccin: Vaccin = new Vaccin;
@@ -61,7 +62,6 @@ export class VaccinComponent {
     messageKO='';
 
     constructor(private vaccinService: VaccinService) {
-
 
 
     }
@@ -135,6 +135,20 @@ export class VaccinComponent {
             })
     }
 
+    getVaccinsArchives() {
+
+        //console.log(dossierMedical.idDos);
+        this.vaccinService.getVaccinsArchives(this.dossierMedical.idDos.toString())
+            .subscribe(reponse => {
+                this.vaccinsArchives = reponse;
+
+                console.log(this.vaccinsArchives);
+
+
+
+            })
+    }
+
     UpdateVaccin() {
 
 // je construis mon vaccin
@@ -187,6 +201,22 @@ export class VaccinComponent {
     }
 
 
+    ArchiveVaccin() {
+
+        this.vaccinSelectionne.idDos = this.dossierMedical.idDos;
+        console.log(this.vaccinSelectionne);
+
+
+
+        this.vaccinService.archiveVaccin(this.vaccinSelectionne)
+            .subscribe(result => {
+
+
+            })
+
+
+    }
+
     DeleteVaccin() {
 
    
@@ -207,14 +237,14 @@ export class VaccinComponent {
                     this.vaccin.alertePatientVac= false;
                     this.vaccin.alertePatientVac= false;
 
-                    this.messageOK = "Vaccin supprimée";
+                    this.messageOK = "Vaccin supprimé";
                     this.deleted=true;
                     this.getVaccins();
 
                 }
                 else if (result === false) {
 
-                    this.messageKO = "Vaccin non supprimée";
+                    this.messageKO = "Vaccin non supprimé";
                 }
 
             })
@@ -233,6 +263,7 @@ export class VaccinComponent {
     ngOnChanges() {
         // reset vaccins
         this.getVaccins();
+        this.getVaccinsArchives();
     }
 
     ngOnInit(){

@@ -12,6 +12,7 @@ export class Vaccin {
     dateDernierVac: string;
     dateProchainVac: string;
     dateCreationVac: string;
+    dateArchivageVac: string;
     alertePatientVac: boolean;
     alerteMedecinVac: boolean;
 

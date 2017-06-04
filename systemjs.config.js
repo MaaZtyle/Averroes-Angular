@@ -30,6 +30,8 @@
             '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
             '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
             'moment': 'node_modules/moment',
+            'ng2-validation': 'npm:ng2-validation/bundles/ng2-validation.umd.js',
+            'libphonenumber-js'   : 'npm:libphonenumber-js/bundle/libphonenumber-js.min.js',
 
 
 
@@ -52,6 +54,8 @@
             'ngx-bootstrap': { format: 'cjs', main: 'bundles/ngx-bootstrap.umd.js', defaultExtension: 'js' },
 
             'moment': { defaultExtension: 'js' },
+            'libphonenumber-js'         : {defaultExtension: 'js'}
+
 
         }
     });

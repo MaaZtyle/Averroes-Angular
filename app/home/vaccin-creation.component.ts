@@ -67,6 +67,7 @@ export class VaccinCreationComponent {
 
     ajouterVaccin(vaccin: Vaccin) {
 
+
         vaccin.idDos=this.dossierMedical.idDos;
         vaccin.nomVac=this.vaccinModelSelectionne.nom;
 
@@ -93,7 +94,7 @@ export class VaccinCreationComponent {
         //console.log(newDateObj);
         this.vaccinService.ajouterVaccin(vaccin)
             .subscribe(result => {
-                //console.log(result);
+
 
                 if (result === true) {
 
@@ -101,7 +102,6 @@ export class VaccinCreationComponent {
                     this.vaccin=new Vaccin();
                     this.vaccin.alertePatientVac=false;
                     this.vaccin.alerteMedecinVac=false;
-
 
 
                 }
@@ -115,8 +115,8 @@ export class VaccinCreationComponent {
     }
 
     resetMessage(){
-        this.messageOK ='';
-        this.messageKO='';
+        this.messageOK =null;
+        this.messageKO=null;
 
     }
 
