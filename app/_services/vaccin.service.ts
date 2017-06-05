@@ -177,20 +177,17 @@ export class VaccinService{
     }
 
 
-    archiveVaccin(vaccin: Vaccin): Observable<any>{
+    archiverVaccin(vaccin: Vaccin): Observable<any>{
 
-        // add authorization header with jwt token
         let headers = new Headers({ 'Authorization': localStorage.getItem('token')});
-
-        let options = new RequestOptions({ headers: headers});
-
-    //let options = new RequestOptions({headers: headers, idAll: idAll });
+        let options = new RequestOptions({ headers: headers });
 
         let url = "http://localhost:8080/AVERROES_MIDDLEWARE/ws/dossiermedical/vaccin/archive";
 
         return this.http
-            .post(url, JSON.stringify(vaccin),{headers: headers})
+            .put(url, JSON.stringify(vaccin),{headers: headers})
             .map((response: Response) => {
+
                 return true;
 
             })
@@ -199,9 +196,6 @@ export class VaccinService{
                 // this is executed on a 401 or on any error
                 return Observable.of(false);
             });
-
-
-
 
 
     }

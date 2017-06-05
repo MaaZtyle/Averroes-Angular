@@ -9,6 +9,11 @@ import {DossierMedical} from "../_models/dossierMedical";
 import {VaccinService} from "../_services/vaccin.service";
 import {Vaccin} from "../_models/vaccin";
 import moment = require("moment/moment");
+import {date} from "ng2-validation/dist/date/validator";
+
+import {empty} from "rxjs/Observer";
+
+
 
 
 
@@ -27,12 +32,35 @@ export class VaccinComponent {
     dossierMedical: DossierMedical;
     vaccinsModel =[
 
-        {nom: 'diphtérie', rappel:5},
-        {nom:'tétanos', rappel:2},
-        {nom:'grippe', rappel:3},
-        {nom:'poliomyélite', rappel:4},
-        {nom:'fièvre jaune', rappel:5},
-        {nom:'autre', rappel:6} ];
+        {nom:'BCG', rappel:5},
+        {nom:'Diphtérie / Tétanos', rappel:2},
+        {nom:'Diphtérie / Tétanos / Poliomyélite', rappel:3},
+        {nom:'Diphtérie / Tétanos / Coqueluche /Poliomyélite', rappel:4},
+        {nom:'Diphtérie / Tétanos / Coqueluche / Poliomyélite / Haemophilus Influenzae b ', rappel:5},
+        {nom:'Diphtérie, Coqueluche acellulaire, Tétanos, Haemophilus influenzae de type b	', rappel:6},
+        {nom:'Fièvre jaune', rappel:5},
+        {nom:'Grippe saisonnière', rappel:2},
+        {nom:'Hépatite A', rappel:3},
+        {nom:'Hépatite B', rappel:4},
+        {nom:'Hépatite A & Hépatite B', rappel:5},
+        {nom:'Leptospirose', rappel:6},
+        {nom:'Méningocoque A & C', rappel:6},
+        {nom:'Méningocoque A, C, Y, W135', rappel:6},
+        {nom:'Méningocoque C (vaccins conjugués)', rappel:6},
+        {nom:'Papillomavirus humains (HPV)', rappel:6},
+        {nom:'Pneumocoque (infections invasives à = IIP)', rappel:5},
+        {nom:'Poliomyélite', rappel:6},
+        {nom:'Rage', rappel:6},
+        {nom:'Rougeole', rappel:6},
+        {nom:'Rougeole / Oreillons / Rubéole', rappel:6},
+        {nom:'Tétanos', rappel:6},
+        {nom:'Typhoïde (fièvre) ', rappel:6},
+        {nom:'Typhoïde et Hépatite A ', rappel:6},
+        {nom:'Varicelle', rappel:6},
+
+
+
+    ];
 
 
     vaccinSelectionne: any;
@@ -201,16 +229,41 @@ export class VaccinComponent {
     }
 
 
-    ArchiveVaccin() {
+    ArchiverVaccin() {
 
-        this.vaccinSelectionne.idDos = this.dossierMedical.idDos;
-        console.log(this.vaccinSelectionne);
+        //this.vaccinSelectionne.idDos = this.dossierMedical.idDos;
+        //console.log(this.vaccinSelectionne.idVac);
+
+        this.vaccin.idVac=this.idVac;
+        this.vaccin.nomVac=this.vaccinSelectionne.nomVac;
+        this.vaccin.descriptionVac=this.descriptionVaccin;
+
+        console.log(this.dateDernierVaccin);
+        console.log(this.dateProchainVaccin);
+
+        var dateDernierVaccin= moment(this.dateDernierVaccin);
+        var dateProchainVaccin= moment(this.dateProchainVaccin);
+
+
+        this.vaccin.dateDernierVac=dateDernierVaccin.format('DD-MM-YYYY');
+        this.vaccin.dateProchainVac=dateProchainVaccin.format('DD-MM-YYYY');
+
+        let theDate = new Date();
+
+
+        this.vaccin.dateArchivageVac= theDate.toLocaleDateString();
 
 
 
-        this.vaccinService.archiveVaccin(this.vaccinSelectionne)
+
+        this.vaccin.alertePatientVac= this.alertePatientVaccin;
+        this.vaccin.alerteMedecinVac= this.alerteMedecinVaccin;
+
+
+        this.vaccinService.archiverVaccin(this.vaccin)
             .subscribe(result => {
-
+                this.getVaccins();
+                this.getVaccinsArchives();
 
             })
 

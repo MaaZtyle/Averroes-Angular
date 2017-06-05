@@ -33,12 +33,33 @@ export class VaccinCreationComponent {
 
     vaccinsModel =[
 
-        {nom: 'diphtérie', rappel:5},
-        {nom:'tétanos', rappel:2},
-        {nom:'grippe', rappel:3},
-        {nom:'poliomyélite', rappel:4},
-        {nom:'fièvre jaune', rappel:5},
-        {nom:'autre', rappel:6} ];
+        {nom:'BCG', rappel:5},
+        {nom:'Diphtérie / Tétanos', rappel:2},
+        {nom:'Diphtérie / Tétanos / Poliomyélite', rappel:3},
+        {nom:'Diphtérie / Tétanos / Coqueluche /Poliomyélite', rappel:4},
+        {nom:'Diphtérie / Tétanos / Coqueluche / Poliomyélite / Haemophilus Influenzae b ', rappel:5},
+        {nom:'Diphtérie, Coqueluche acellulaire, Tétanos, Haemophilus influenzae de type b	', rappel:6},
+        {nom:'Fièvre jaune', rappel:5},
+        {nom:'Grippe saisonnière', rappel:2},
+        {nom:'Hépatite A', rappel:3},
+        {nom:'Hépatite B', rappel:4},
+        {nom:'Hépatite A & Hépatite B', rappel:5},
+        {nom:'Leptospirose', rappel:6},
+        {nom:'Méningocoque A & C', rappel:6},
+        {nom:'Méningocoque A, C, Y, W135', rappel:6},
+        {nom:'Méningocoque C (vaccins conjugués)', rappel:6},
+        {nom:'Papillomavirus humains (HPV)', rappel:6},
+        {nom:'Pneumocoque (infections invasives à = IIP)', rappel:5},
+        {nom:'Poliomyélite', rappel:6},
+        {nom:'Rage', rappel:6},
+        {nom:'Rougeole', rappel:6},
+        {nom:'Rougeole / Oreillons / Rubéole', rappel:6},
+        {nom:'Tétanos', rappel:6},
+        {nom:'Typhoïde (fièvre) ', rappel:6},
+        {nom:'Typhoïde et Hépatite A ', rappel:6},
+        {nom:'Varicelle', rappel:6},
+
+        ];
 
 
 
